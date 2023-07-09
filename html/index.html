@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="./css/styles.css">
+    <script src="./js/index.js"></script>
+  </head>
+
+  <body>
+    <div id="form_container">
+
+      <form id="login_form">
+        <h2 class="form_title">Login</h2>
+        <div>
+          <input type="text" id="login_form_username" minlength="3" maxlength="30" required autofocus placeholder="Username" title="(3-30 character length)">
+        </div>
+
+        <div>
+          <input type="password" id="login_form_password" minlength="3" maxlength="30" required placeholder="Password" title="(3-30 character length)">
+        </div>
+
+        <div>
+          <input type="submit" class="form_button" value="Login">
+        </div>
+        <div class="form_link">
+          <a href="#" onclick="switchForm()">Create an account</a>
+        </div>
+      </form>
+
+      <form id="signup_form" style="display: none;">
+        <h2 class="form_title">Create Account</h2>
+        <div>
+          <input type="text" id="signup_form_username" minlength="3" maxlength="30" required autofocus placeholder="Username" title="(3-30 character length)">
+        </div>
+    
+        <div>
+          <input type="password" id="signup_form_password" minlength="3" maxlength="30" required placeholder="Password" title="(3-30 character length)">
+        </div>
+    
+        <div>
+          <input type="submit" class="form_button" value="Submit">
+        </div>
+        <div class="form_link">
+          <a href="#" onclick="switchForm()">Login to existing account</a>
+        </div>
+      </form>
+    </div>
+
+    <div id="chat_container" style="display: none;">
+
+      <div id="contacts_sidebar">
+          <h2>Contacts</h2>
+          <ul id="contacts_list">
+              <li id="open_chat">Global Chat</li>
+          </ul>
+          <div id="user_info">This username</div>
+      </div>
+      
+      <div id="chat_window">
+          
+          <div id="messages">
+              <div class="message">
+                  <div>User 1:</div>
+                  <div>Hello world</div>
+              </div>
+              <div class="message">
+                  <div>User 2:</div>
+                  <div>hello</div>
+              </div>
+          </div>
+          
+          <div id="input_container">
+              <button id="attach_file">+</button>
+              <input id="msg_input" type="text" placeholder="Message">
+              <button id="msg_btn">Send</button>
+          </div>
+
+      </div>
+  </div>
+
+    <script>
+      window.onload = function() {
+        formsInit();
+      };
+    </script>
+  </body>
+
+
+</html>
