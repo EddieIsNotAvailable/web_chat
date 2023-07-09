@@ -295,7 +295,7 @@ public class App extends WebSocketServer
         json.addProperty("type", "msg");
         json.addProperty("from", account.getAccountName());
         json.addProperty("content", content);
-        conn.send(json.toString());
+        broadcast(json.toString());
     }
 
     private void typing_status_request(WebSocket conn) {
@@ -304,6 +304,6 @@ public class App extends WebSocketServer
         JsonObject json = new JsonObject();
         json.addProperty("type", "typing_status");
         json.addProperty("from", account.getAccountName());
-        conn.send(json.toString());
+        broadcast(json.toString());
     }
 }

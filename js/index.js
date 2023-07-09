@@ -108,9 +108,7 @@ function login(msg) {
     msg.content.password,
     msg.content.tokens.tokenBalance
   );
-  const username = msg.content.username; //RM
-  const tokens = msg.content.tokens; //RM
-  console.log(username + " (" + tokens + ")"); //RM
+  console.log(client.username + " (" + client.tokens + ")"); //RM
 
   loadChatPage();
 }
@@ -132,50 +130,50 @@ function loadChatPage() {
   document.getElementById("form_container").style.display = "none";
 
   document.title = "Chat";
-  document.getElementById("user_info").innerHTML = client.username;
-  document.getElementById("chat_container").style.display = "block";
-}
+  document.getElementById("username").innerHTML = client.username;
+  // document.getElementById("chat_container").style.display = "block";
 
-//Send msg upon enter pressed
-//Also handles sending typing status messages
-var time = null;
-const msg_input = document.getElementById("msg_input");
-msg_input.addEventListener("keydown", function(event) {
-  if(event.key === "Enter") {
+  document.getElementById("messaging_screen").style.display = "flex";
+  document.getElementById("msg_input").style.display = "flex";
+
+  //Send message upon send button clicked
+  const msg_btn = document.getElementById("msg_btn");
+  msg_btn.addEventListener("click", function(event) {
     event.preventDefault();
     send_msg_request();
+  });
 
-  } else { //Only send typing status notif if last > 5 seconds ago
-    if (time) {
-      var newtime = new Date();
-      if(newtime - time < 5000) return false;
+  //Send msg upon enter pressed
+  //Also handles sending typing status messages
+  var time = null;
+  const msg_input = document.getElementById("msg_input");
+  msg_input.addEventListener("keydown", function(event) {
+    if(event.key === "Enter") {
+      event.preventDefault();
+      send_msg_request();
+
+    } else { //Only send typing status notif if last > 5 seconds ago
+      if (time) {
+        var newtime = new Date();
+        if(newtime - time < 5000) return false;
+        else time = new Date();
+      }
       else time = new Date();
-    }
-    else time = new Date();
-    
-    const msg = {
-      type: "typing_status"
-      // from: client.username
-      // in: open_chat.innerHTML
-    }
+      
+      const msg = {
+        type: "typing_status"
+      }
 
-    conn.send(JSON.stringify(msg));
-  }
-});
-
-//Send message upon send button clicked
-const msg_button = document.getElementById("msg_btn");
-msg_button.addEventListener("onclick", function(event) {
-  event.preventDefault();
-  send_msg_request();
-});
+      conn.send(JSON.stringify(msg));
+    }
+  });
+}
 
 //Send contents of msg input area
 function send_msg_request() {
-  const msg = { //Don't need to indicate msg sender, since websocket associates connections to usernames
+  const msg = {
     type: "msg",
-    // to: open_chat.innerHTML,
-    // from: client.username,
+
     content: msg_input.value
   };
 

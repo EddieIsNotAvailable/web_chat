@@ -47,16 +47,14 @@
       </form>
     </div>
 
-    <div id="messaging_screen" style="display: none;">
+    <div id="chat_container" style="display: none;">
 
       <div id="contacts_sidebar">
           <h2>Contacts</h2>
           <ul id="contacts_list">
-              <li>Global Chat</li>
+              <li id="open_chat">Global Chat</li>
           </ul>
-          <div id="user_info">
-            <div id="username"></div>
-          </div>
+          <div id="user_info">This username</div>
       </div>
       
       <div id="chat_window">
@@ -70,17 +68,14 @@
                   <div>User 2:</div>
                   <div>hello</div>
               </div>
-              <div class="message">
-                  <div>User 3:</div>
-                  <div>How are you doing?</div>
-              </div>
           </div>
           
           <div id="input_container">
               <button id="attach_file">+</button>
-              <input type="text" id="msg_input" placeholder="Message">
+              <input id="msg_input" type="text" placeholder="Message">
               <button id="msg_btn">Send</button>
           </div>
+
       </div>
   </div>
 

@@ -35,7 +35,7 @@ form input {
 
 /* Chat page */
 
-#chat_container {
+#messaging_screen {
   display: flex;
   height: 100vh;
   color: white;
@@ -71,6 +71,11 @@ form input {
   text-align: center;
 }
 
+#username {
+  color: white;
+  cursor: pointer;
+}
+
 #chat_window {
   display: flex;
   flex-grow: 1;
@@ -86,13 +91,14 @@ form input {
 
 .message {
   margin-bottom: 10px;
+  cursor: pointer;
 }
 
 #input_container {
   display: flex;
 }
 
-#msg_input {
+#msg_input{
   flex-grow: 1;
   padding: .5em;
   border-radius: 4px;
